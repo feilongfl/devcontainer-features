@@ -14,6 +14,15 @@
 				"curl,nano"
 			]
 		},
+		"mirror": {
+			"type": "string",
+			"default": "archive.ubuntu.com",
+			"description": "mirrors url.",
+			"proposals": [
+				"archive.ubuntu.com",
+				"mirrors.ustc.edu.cn"
+			]
+		},
 		"upgradePackages": {
 			"type": "boolean",
 			"default": false,

@@ -2,6 +2,7 @@
 
 PACKAGES=${PACKAGES:-""}
 UPGRADE_PACKAGES=${UPGRADEPACKAGES:-"false"}
+MIRROR=${MIRROR:-"archive.ubuntu.com"}
 
 APT_PACKAGES=("${PACKAGES//,/ }")
 
@@ -36,6 +37,9 @@ check_packages() {
 }
 
 export DEBIAN_FRONTEND=noninteractive
+
+sudo sed -i 's@//.*archive.ubuntu.com@//$MIRROR@g' /etc/apt/sources.list
+sudo sed -i 's/security.ubuntu.com/$MIRROR/g' /etc/apt/sources.list
 
 # shellcheck disable=SC2048 disable=SC2086
 check_packages ${APT_PACKAGES[*]}
